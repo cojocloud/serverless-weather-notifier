@@ -140,17 +140,23 @@ Update the `EMAILS` variable with additional comma-separated email addresses.
 1. **SES Email Not Sending**:
    - Ensure the FROM_EMAIL is verified in SES.
    - Check if you're in SES sandbox mode (limits apply).
+   - In SES sandbox mode, recipient email addresses must also be verified in SES before they can receive emails.
 
-2. **Lambda Function Errors**:
+2. **Email Lands in Spam**:
+   - AWS SES emails sent from sandbox accounts are likely to be filtered into spam/junk folders.
+   - Check your spam folder if you don't see the notification in your inbox.
+   - For production use, request SES production access via AWS Support to improve deliverability.
+
+3. **Lambda Function Errors**:
    - Check CloudWatch Logs for the Lambda function.
    - Verify API_KEY and LOCATION_ID are correct.
    - Ensure AccuWeather API limits aren't exceeded.
 
-3. **Terraform Apply Fails**:
+4. **Terraform Apply Fails**:
    - Verify AWS credentials and permissions.
    - Check if required AWS services are available in your region.
 
-4. **No Weather Data**:
+5. **No Weather Data**:
    - Confirm LOCATION_ID is valid.
    - Check AccuWeather API key validity.
 

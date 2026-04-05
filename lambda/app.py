@@ -1,5 +1,5 @@
 import os
-from botocore.vendored import requests
+import requests
 import time
 import jinja2
 import boto3
